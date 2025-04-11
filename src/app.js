@@ -5,8 +5,10 @@ import jobsRouter from './api/jobs.js';
 import metricsRouter from './api/metrics.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { logger } from './monitoring/logger.js';
+import { connectRedis } from './config/redis.js';
 
 const app = express();
+await connectRedis()
 
 // Middleware
 app.use(express.json());

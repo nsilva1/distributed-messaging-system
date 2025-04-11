@@ -1,6 +1,7 @@
 import { jobQueue } from './queue.js';
 import { updateJob } from '../storage/jobStorage';
 import { httpRequestDuration, jobCounter } from '../monitoring/metrics.js';
+// import { redisWrapper } from '../config/redis.js';
 
 const mockProcessing = async (jobData) => {
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -8,6 +9,7 @@ const mockProcessing = async (jobData) => {
 
 jobQueue.process(async (job) => {
   const endTimer = httpRequestDuration.startTimer();
+//   const jobData = await redisWrapper.get(`job:${job.id}`)
   try {
     console.log(`Processing job ${job.id}: ${job.data.type}`);
     await mockProcessing(job.data);
