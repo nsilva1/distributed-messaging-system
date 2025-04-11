@@ -1,9 +1,12 @@
 import Bull from 'bull';
-import { redisConfig } from '../config/redis';
+import { logger } from '../monitoring/logger';
+import { jobCounter, httpRequestDuration } from '../monitoring/metrics';
 
-export const jobQueue = new Bull('jobs', {
-  redis: redisConfig,
-  settings: {
-    retryProcessDelay: 5000,
-  },
-});
+const queue = new Bull('jobs', process.env.REDIS_URL);
+
+queue.on('failed', (job, error) => {
+    logger.error(`Job ${job.id} failed: ${error.message}`);
+    jobCounter.labels(job.data.type, 'failed').inc()
+})
+
+export const jobQueue = queue;
