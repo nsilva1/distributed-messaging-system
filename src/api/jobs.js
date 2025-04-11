@@ -1,5 +1,5 @@
 import express from 'express'
-import { createJob, getJob } from '../services/jobService.js'
+import { createJob, getJob } from '../services/jobService'
 
 const router = express.Router()
 
