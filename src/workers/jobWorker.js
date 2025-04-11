@@ -1,5 +1,5 @@
 import { jobQueue } from './queue.js';
-import { updateJob } from '../storage/jobStorage.js';
+import { updateJob } from '../storage/jobStorage';
 
 
 const mockProcessing = async(jobData) => {
