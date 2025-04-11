@@ -1,5 +1,5 @@
 import { v4 as uuidV4 } from "uuid";
-import { jobQueue } from '../workers/queue';
+import { jobQueue } from "../workers/queue";
 import { storeJob, fetchJob } from '../storage/jobStorage';
 
 export const createJob = async ( jobData ) => {
