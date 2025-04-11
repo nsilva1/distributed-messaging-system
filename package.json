@@ -1,7 +1,23 @@
 {
   "name": "messaging-system",
+  "type": "module",
   "version": "1.0.0",
-  "main": "app.js",
   "author": "Neto Ukpong-Neto",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/app.js",
+    "start:worker": "node src/workers/jobWorker.js",
+    "test": "mocha test/**/*.test.js"
+  },
+  "dependencies": {
+    "bull": "^4.16.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "redis": "^4.7.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^11.1.0",
+    "supertest": "^7.1.0"
+  }
 }
