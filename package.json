@@ -1,0 +1,7 @@
+{
+  "name": "messaging-system",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Neto Ukpong-Neto",
+  "license": "MIT"
+}
