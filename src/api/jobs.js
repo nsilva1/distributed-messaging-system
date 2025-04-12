@@ -14,7 +14,7 @@ const router = express.Router()
  */
 
 
-router.post('/', authenticate, validateJob, async (req, res) => {
+router.post('/jobs', authenticate, validateJob, async (req, res) => {
     try {
         const job = await createJob(req.body)
         res.status(201).json(job)
@@ -23,7 +23,7 @@ router.post('/', authenticate, validateJob, async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/jobs/:id', async (req, res) => {
     const job = await getJob(req.params.id);
     
     if(!job){
